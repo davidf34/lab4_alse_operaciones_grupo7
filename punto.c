@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#define MAX_FILE_SIZE 100
+#define MAX_FILE_SIZE 1500
 
 //definicion de prototipos
 void leer();
@@ -44,6 +44,18 @@ int main(int argc, char* argv[]){
 	float matrs2[columnas2][filas2];
 	armatriz(buffer1,&filesize1,&columnas1,&filas1,mat1);// se rellena la matriz
 	armatriz(buffer2,&filesize2,&columnas2,&filas2,mat2);
+	for (i=0;i<filas2;i++){
+			for (j=0;j<columnas2 ;j++){
+				printf("   %1.2f   ", mat1[i][j]);
+			}
+		printf("\n");
+	}
+	for (i=0;i<filas2;i++){
+			for (j=0;j<columnas2 ;j++){
+				printf("   %1.2f   ", mat2[i][j]);
+			}
+		printf("\n");
+	}
 	if (strcmp(h,"--help")== 0)
 	{
 		ayuda();//imprime la ayuda
@@ -242,7 +254,7 @@ void fyc(char* buffer1, int* filas, int* columnas, int* file_size){// contador d
 	int c=*columnas;
 	int fi=*filas;
 	for (i=0;i<=f;i++){//contar columnas en la primera linea del archivo
-		if (buffer1[i]=='\n'){
+		if (buffer1[i]=='\r'){
 				break;
 			}
 		if (buffer1[i]==';'){
@@ -250,7 +262,7 @@ void fyc(char* buffer1, int* filas, int* columnas, int* file_size){// contador d
 			}
 	}
 	for (i=0;i<=f;i++){//contar filas en todo el archivo 
-		if (buffer1[i]=='\n'){
+		if (buffer1[i]=='\r'){
 				fi=fi+1;
 			}
 	}
@@ -306,11 +318,14 @@ void armatriz(char* buffer1, int* file_size,int* columnas, int* filas, float mat
 	float o=0;
 	float paso[f];
 	for (i=0;i<=f;i++){// recorre hasta encontrar ; guarda lo que encontro en prueba, lo convierte a float y lo guarda en paso
-		if (buffer1[i]==';' | buffer1[i]=='\n' | buffer1[i]=='\0' ){
+		if (buffer1[i]==';' | buffer1[i]=='\r'|  buffer1[i]=='\0' ){
 			o=atof(prueba);
 			for (b=0;b<MAX_FILE_SIZE;b++){
 				prueba[b]='\0';
 			} 
+			if (buffer1[i]=='\n'){
+				i++;
+			}
 			paso[k]=o;
 			j=0;
 			k++;
