@@ -18,3 +18,8 @@ El programa siempre se debe ejecutar de la siguiente manera:
 - El argumento 5 -r guarda la resta de las matrices en un archivo con nombre y dirección dadas en el argumento 4 
 - El argumento 5 -tb guarda la transpuesta de la segunda matriz en un archivo con nombre y dirección dadas en el argumento 4 
 - El argumento 5 -ta guarda la transpuesta de la primera matriz en un archivo con nombre y dirección dadas en el argumento 4 
+
+
+Diagrama
+------------
+![diagramaaaa_page-0001](https://user-images.githubusercontent.com/69484071/94819712-3191a000-03c5-11eb-9703-0d86d8f3ba1c.jpg)
